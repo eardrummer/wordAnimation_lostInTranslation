@@ -53,15 +53,18 @@ function newSentence(data){
 
 }
 
+// Testing ------------------------------ recreating server send message on mouse click -----------------------------
 function mouseClicked(){
 	testSentences();
 }
 
+// Testing
 function testSentences(){
 	var data = "this is a sentence"
 	socket.emit('msg', data);
-	//console.log('sending data' + data)
 }
+
+//------------------------------------- remove this block when not testing local server sends -------------------------
 
 function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
@@ -87,11 +90,11 @@ class Word {
 
     if (this.pos.y <= height*0.5) {
       if (this.alpha > 0) {
-        this.alpha -= 2;
+        this.alpha -= 5;
       }
 
     } else {
-      this.acc.x = sin(this.angle) * 0.1;
+      this.acc.x = sin(this.angle) * 0.05;
       this.pos.x += this.acc.x; // Add this line to update the x-position based on the horizontal oscillation
 		}
 
@@ -118,7 +121,7 @@ class Word {
     }
   }
 	generateSmoke() {
-    let numParticles = 10;
+    let numParticles = 1;
     for (let i = 0; i < numParticles; i++) {
       let x = this.pos.x + random(-10, 10);
       let y = this.pos.y + random(-10, 10);
